@@ -1,0 +1,31 @@
+import glob, os, fileinput, sys
+data = {}
+print("Xls-Dateien zusammenführen script 1.0")
+print("A W")
+dir_name =  input("Bitte geben Sie den Pfad für den FFT-Image-Ordner ein:  ")
+file_name = input("Bitte geben Sie den gewünschten Dateinamen für den Aktinin xls ein:  ")
+file_name2 = input("Bitte geben Sie den gewünschten Dateinamen für den Tintin xls ein:  ")
+os.chdir(dir_name)
+for infile in glob.glob("*\\*actinin*.xls"):
+    with open(infile) as inf:
+        data[infile] = [l[:-1] for l in inf]
+with open(file_name + ".xls", "w") as outf:
+    outf.write("\t".join(data.keys()) + "\n")
+    for sublst in zip(*data.values()):
+        outf.write("\t".join(sublst) + "\n")
+data.clear()
+for infile2 in glob.glob("*\\*titin*.xls"):
+    with open(infile2) as inf:
+        data[infile2] = [l[:-1] for l in inf]
+with open(file_name2 + ".xls", "w") as outf:
+    outf.write("\t".join(data.keys()) + "\n")
+    for sublst in zip(*data.values()):
+        outf.write("\t".join(sublst) + "\n")
+textToSearch = (".")
+textToReplace = (",")
+for xlsmfile in glob.glob("*.xls"):
+	tempFile = open(xlsmfile, 'r+' )
+	for line in fileinput.input(xlsmfile ):
+		if textToSearch in line :
+			tempFile.write(line.replace( textToSearch, textToReplace ) )
+tempFile.close()
