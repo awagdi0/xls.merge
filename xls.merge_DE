@@ -1,6 +1,6 @@
 import glob, os, fileinput, sys
 data = {}
-print("Xls-Dateien zusammenführen script 1.0")
+print("Xls-Dateien zusammenführen script 1.1")
 print("A W")
 dir_name =  input("Bitte geben Sie den Pfad für den FFT-Image-Ordner ein:  ")
 file_name = input("Bitte geben Sie den gewünschten Dateinamen für den Aktinin xls ein:  ")
