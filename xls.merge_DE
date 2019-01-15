@@ -1,5 +1,5 @@
 import glob, os, fileinput, sys, urllib, requests
-print("Xls-Dateien zusammenführen script 1.5")
+print("Xls-Dateien zusammenführen script 1.6")
 print("A W")
 print("Suchen nach Updates")
 # Function to download latest version
@@ -32,6 +32,7 @@ with open(file_name2 + ".xls", "w") as outf:
     outf.write("\t".join(data.keys()) + "\n")
     for sublst in zip(*data.values()):
         outf.write("\t".join(sublst) + "\n")
+# Replace "." with "," as a decimal separator 
 textToSearch = (".")
 textToReplace = (",")
 for xlsmfile in glob.glob("*.xls"):
@@ -40,3 +41,4 @@ for xlsmfile in glob.glob("*.xls"):
 		if textToSearch in line :
 			tempFile.write(line.replace( textToSearch, textToReplace ) )
 tempFile.close()
+print("Fertig!")
