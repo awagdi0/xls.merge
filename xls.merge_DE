@@ -1,7 +1,18 @@
-import glob, os, fileinput, sys
-data = {}
-print("Xls-Dateien zusammenführen script 1.1")
+import glob, os, fileinput, sys, urllib, requests
+print("Xls-Dateien zusammenführen script 1.5")
 print("A W")
+print("Suchen nach Updates")
+# Function to download latest version
+response = urllib.request.urlopen('https://raw.githubusercontent.com/awagdi0/xls.merge/master/xls.merge_DE')
+data = response.read()
+# Write data to file
+print(sys.argv[0])
+scriptname = ((sys.argv[0]))
+fileU = open(scriptname, 'wb')
+fileU.write(data)
+fileU.close()
+# XLS merge script
+data = {}
 dir_name =  input("Bitte geben Sie den Pfad für den FFT-Image-Ordner ein:  ")
 file_name = input("Bitte geben Sie den gewünschten Dateinamen für den Aktinin xls ein:  ")
 file_name2 = input("Bitte geben Sie den gewünschten Dateinamen für den Tintin xls ein:  ")
