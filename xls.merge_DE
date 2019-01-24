@@ -1,5 +1,5 @@
 import glob, os, fileinput, sys, urllib, requests
-print("Xls-Dateien zusammenführen script 1.7")
+print("Xls-Dateien zusammenführen script 1.6")
 print("A W")
 print("Suchen nach Updates")
 # Function to download latest version
