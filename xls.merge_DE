@@ -12,7 +12,7 @@ response = http.request('GET', 'https://raw.githubusercontent.com/awagdi0/xls.me
 data = response.read()
 #print(data)
 # Write data to file
-print(sys.argv[0])
+#print(sys.argv[0])
 scriptname = ((sys.argv[0]))
 fileU = open(scriptname, 'wb')
 fileU.write(data)
