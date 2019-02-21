@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import glob, os, fileinput, sys, urllib3, requests
 requests.packages.urllib3.disable_warnings()
-print("Xls-Dateien zusammenführen script 1.9")
+print("Xls-Dateien zusammenführen script 1.91")
 print("Change log, comma bug fixed, UMG proxy hinzugefügt")
 print("W. Ahmed")
 print("Suchen nach Updates via UMG Proxy")
