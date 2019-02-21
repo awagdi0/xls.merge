@@ -1,13 +1,16 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
-import glob, os, fileinput, sys, urllib, requests
-print("Xls-Dateien zusammenführen script 1.7")
-print("Change log, comma bug fixed")
-print("A W")
-print("Suchen nach Updates")
-# Function to download latest version
-response = urllib.request.urlopen('https://raw.githubusercontent.com/awagdi0/xls.merge/master/xls.merge_DE')
+import glob, os, fileinput, sys, urllib3, requests
+requests.packages.urllib3.disable_warnings()
+print("Xls-Dateien zusammenführen script 1.9")
+print("Change log, comma bug fixed, UMG proxy hinzugefügt")
+print("W. Ahmed")
+print("Suchen nach Updates via UMG Proxy")
+# Function to download latest version using UMG proxy
+http = urllib3.proxy_from_url('http://astaro01-proxy.med.uni-goettingen.de:8080')  # This returns a ProxyManager object which has the same API as other ConnectionPool objects.
+response = http.request('GET', 'https://raw.githubusercontent.com/awagdi0/xls.merge/master/xls.merge_DE' , preload_content=False)
 data = response.read()
+#print(data)
 # Write data to file
 print(sys.argv[0])
 scriptname = ((sys.argv[0]))
@@ -35,7 +38,7 @@ with open(file_name2 + ".xls", "w") as outf:
     outf.write("\t".join(data.keys()) + "\n")
     for sublst in zip(*data.values()):
         outf.write("\t".join(sublst) + "\n")
-# Replace "." with "," as a decimal separator 
+# Replace "." with "," as a decimal separator
 textToSearch = (".")
 textToReplace = (",")
 for xlsmfile in glob.glob("*.xls"):
